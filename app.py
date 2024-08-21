@@ -13,6 +13,8 @@ def get_chatgpt_modellist():
     hidden_key = os.getenv('API_KEY')
     headers = {"Authorization": f"Bearer {hidden_key}"}
     response = requests.get(url, headers=headers)
+
+    model_list = [""]
     if response.status_code == 200:
         models = response.json()['data']
         models = sorted(models, key=lambda x: x['created'], reverse=True)
